@@ -34,6 +34,7 @@ var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", 
     seattleList.appendChild(newListItem);
     }
     var newListItem = document.createElement('li');
+
     // 2.5 content
 
     newListItem.textContent = 'Total: ' + this.total + ' cookies';
@@ -55,6 +56,9 @@ function createHours() {
     }
 }
 
+function createTableHead(){
+
+}
 
 function tableRender(){
     //render the same data in table form
@@ -84,6 +88,25 @@ for(var i = 0; i < this.hourlyCookies.length; i++){
     table.appendChild(tableRow);
 
 
+}
+
+function createTableHours(){
+    var header = document.getElementById('cookie-table');
+
+    var tableRow = document.createElement('tr');
+
+    var tableCell = document.createElement('td');
+
+    tableCell.textContent = 'hours';
+
+    tableRow.appendChild(tableCell);
+
+    for(var i = 0; i < hours.length; i ++){
+        tableCell = document.createElement('td');
+        tableCell.textContent = hours[i];
+        tableRow.appendChild(tableCell);
+    }
+    header.appendChild(tableRow);
 }
 
 
@@ -198,6 +221,7 @@ function CookieStore(name, storeId, minCust, maxCust, average){
 var seattleStore = new CookieStore('seattle', 'seattleStore-ul', 23, 65, 6.3);
 //   table.appendChild.tableRow
 
+createTableHours()
 seattleStore.createHours();
 seattleStore.renderToPage();
 
