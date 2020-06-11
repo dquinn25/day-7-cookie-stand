@@ -1,7 +1,7 @@
 'use strict'
 
 
-var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM"]
+var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM"]
 
 // var seattleStore = {
 //     name: "seattle",
@@ -108,7 +108,30 @@ function createTableHours(){
     }
     header.appendChild(tableRow);
 }
+//need to call the function hourlytotals and assign it to a variable 
+//use the variable in a for loop when we want to a assign text content
+function createTableTotal(){
 
+    var footer = document.getElementById('cookie-table');
+
+    var tableRow = document.createElement('tr');
+
+    var tableCell = document.createElement('td');
+
+    tableCell.textContent = 'hourly Totals';
+
+    tableRow.appendChild(tableCell);
+
+        var array = hourlyTotals(); 
+
+    for(var i = 0; i < array.length; i ++){
+        tableCell = document.createElement('td');
+        tableCell.textContent = array[i];
+        tableRow.appendChild(tableCell);
+    }
+    footer.appendChild(tableRow);
+
+}
 
 // seattleStore.createHours()
 // seattleStore.renderToPage()
@@ -126,18 +149,18 @@ function createTableHours(){
 
 
 // console.log(getRandomArbitrary(tokyoStore.tokyoMinCust, tokyoStore.tokyoMaxCust));
-var tokyoStore = {
-    name: "tokyo",
-     MinCust: 3,
-     MaxCust: 24,
-     Average: 1.2,
-    hourlyCustomers:[],
-    hourlyCookies:[],
-    storeId : 'tokyoStore-ul',
-    createHours : createHours,
-    renderToPage : renderToPage, 
-    total : 0,
-}
+// var tokyoStore = {
+//     name: "tokyo",
+//      MinCust: 3,
+//      MaxCust: 24,
+//      Average: 1.2,
+//     hourlyCustomers:[],
+//     hourlyCookies:[],
+//     storeId : 'tokyoStore-ul',
+//     createHours : createHours,
+//     renderToPage : renderToPage, 
+//     total : 0,
+// }
 
 // tokyoStore.createHours()
 // tokyoStore.renderToPage()
@@ -145,36 +168,36 @@ var tokyoStore = {
 
 // console.log(getRandomArbitrary(dubaiStore.dubaiMinCust, dubaiStore.dubaiMaxCust));
 
-var dubaiStore = {
-    name: "dubai",
-     MinCust: 11,
-     MaxCust: 38,
-     Average: 3.7,
-    hourlyCustomers:[],
-    hourlyCookies:[],
-    storeId : 'dubaiStore-ul',
-    createHours : createHours,
-    renderToPage : renderToPage, 
-    total : 0,
-}
+// var dubaiStore = {
+//     name: "dubai",
+//      MinCust: 11,
+//      MaxCust: 38,
+//      Average: 3.7,
+//     hourlyCustomers:[],
+//     hourlyCookies:[],
+//     storeId : 'dubaiStore-ul',
+//     createHours : createHours,
+//     renderToPage : renderToPage, 
+//     total : 0,
+// }
 
 // dubaiStore.createHours()
 // dubaiStore.renderToPage()
 
 // console.log(getRandomArbitrary(parisStore.parisMinCust, parisStore.parisMaxCust));
 
-var parisStore = {
-    name: "paris",
-     MinCust: 20,
-     MaxCust: 38,
-     Average: 2.3,
-    hourlyCustomers:[],
-    hourlyCookies:[],
-    storeId : 'parisStore-ul',
-    createHours : createHours,
-    renderToPage : renderToPage, 
-    total : 0,
-}
+// var parisStore = {
+//     name: "paris",
+//      MinCust: 20,
+//      MaxCust: 38,
+//      Average: 2.3,
+//     hourlyCustomers:[],
+//     hourlyCookies:[],
+//     storeId : 'parisStore-ul',
+//     createHours : createHours,
+//     renderToPage : renderToPage, 
+//     total : 0,
+// }
 
 // parisStore.createHours()
 // parisStore.renderToPage()
@@ -183,23 +206,57 @@ var parisStore = {
 
 // console.log(getRandomArbitrary(limaStore.limaMinCust, limaStore.limaMaxCust));
 
-var limaStore = {
-    name: "lima",
-     MinCust: 2,
-     MaxCust: 16,
-     Average: 4.6,
-    hourlyCustomers:[],
-    hourlyCookies:[],
-    storeId : 'limaStore-ul',
-    createHours : createHours,
-    renderToPage : renderToPage, 
-    total : 0,
-}
+// var limaStore = {
+//     name: "lima",
+//      MinCust: 2,
+//      MaxCust: 16,
+//      Average: 4.6,
+//     hourlyCustomers:[],
+//     hourlyCookies:[],
+//     storeId : 'limaStore-ul',
+//     createHours : createHours,
+//     renderToPage : renderToPage, 
+//     total : 0,
+// }
 
 // limaStore.createHours()
 // limaStore.renderToPage()
 
+function hourlyTotals() {
+    //befor the for loop make an array. In the for loop put the total in the array. last thing you will do is return the array
+    var hourlyCookiesArr = [];
+    
+    for (var i = 0; i < hours.length; i++) {
+        var theTotal = 0;
+        theTotal += seattleStore.hourlyCookies[i];
+        theTotal += tokyoStore.hourlyCookies[i];
+        theTotal += dubaiStore.hourlyCookies[i];
+        theTotal += parisStore.hourlyCookies[i];
+        theTotal += limaStore.hourlyCookies[i];
+        console.log(theTotal);
+        hourlyCookiesArr.push(theTotal);
+    }
+    return hourlyCookiesArr
+  }
+
+
+
  
+// function createTotal(){
+//     var header = document.getElementById('cookie-table');
+
+//     var tableRow = document.createElement('tr');
+
+//     var tableCell = document.createElement('td');
+
+//     tableRow.appendChild(tableCell);
+
+//     for(var i = 0; i < hour[i]; i ++){
+//         tableCell = document.createElement('td');
+    
+//     }
+//     header.appendChild(tableRow);
+// }
 
 
 
@@ -226,7 +283,6 @@ seattleStore.createHours();
 seattleStore.renderToPage();
 
 seattleStore.tableRender();
-
 var tokyoStore = new CookieStore('tokyo', 'tokyoStore-ul', 3, 24, 1.2);
 //   table.appendChild.tableRow
 
@@ -259,3 +315,4 @@ limaStore.renderToPage();
 
 limaStore.tableRender();
 
+createTableTotal();
