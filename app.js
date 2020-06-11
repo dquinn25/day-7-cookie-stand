@@ -92,7 +92,7 @@ for(var i = 0; i < this.hourlyCookies.length; i++){
 
 function createTableHours(){
     var header = document.getElementById('cookie-table');
-
+    console.log(header)
     var tableRow = document.createElement('tr');
 
     var tableCell = document.createElement('td');
@@ -316,3 +316,37 @@ limaStore.renderToPage();
 limaStore.tableRender();
 
 createTableTotal();
+
+//create the outline of form
+//create a event listener
+//crate a event handler
+//city name, min max and average, no ID
+//make new object
+//render the new store to page
+//Questions dry code? <feildset>
+
+var firstDiv = document.getElementById('newStore');
+
+firstDiv.addEventListener('submit', function(event){
+    event.preventDefault()
+    // alert('you clicked the box');
+    console.log('submit', event);
+    console.log('city name', event.target.name.value)
+    console.log('minCust', event.target.minCust.value)
+    console.log('maxCust', event.target.maxCust.value)
+    console.log('minCust', event.target.average.value)
+
+});
+var secondDiv = document.getElementById('minCust');
+
+firstDiv.addEventListener('submit', function(event){
+    event.preventDefault()
+    // alert('you clicked the box');
+    console.log('submit', event);
+  });
+
+ 
+
+//  function createNewCity(event){
+//     console.log(event.timeStamp);
+//     console.log(event.target);
