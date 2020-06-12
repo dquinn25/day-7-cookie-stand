@@ -3,20 +3,9 @@
 
 var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM"]
 
-// var seattleStore = {
-//     name: "seattle",
-//      MinCust: 23,
-//      MaxCust: 65,
-//      Average: 6.3,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-//     storeId : 'seattleStore-ul',
-//     createHours : createHours,
-//     renderToPage : renderToPage, 
-//     total : 0,
-//}
+
     function renderToPage(){
-        var seattleList = document.getElementById(this.storeId); // getElementById takes an argument of the id as a string
+        var seattleList = document.getElementById(this.storeId);
     // 2. new element
     var newListItem = document.createElement('h3');
     // 2.5 content
@@ -137,87 +126,7 @@ function createTableTotal(){
 // seattleStore.renderToPage()
 
 
-// console.log(seattleStore.total)
-// var tokyoStore = {
-//     name: "Tokyo",
-//      tokyoMinCust: 23,
-//      tokyoMaxCust: 65,
-//      tokyoAverage: 6.3,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-// }
 
-
-// console.log(getRandomArbitrary(tokyoStore.tokyoMinCust, tokyoStore.tokyoMaxCust));
-// var tokyoStore = {
-//     name: "tokyo",
-//      MinCust: 3,
-//      MaxCust: 24,
-//      Average: 1.2,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-//     storeId : 'tokyoStore-ul',
-//     createHours : createHours,
-//     renderToPage : renderToPage, 
-//     total : 0,
-// }
-
-// tokyoStore.createHours()
-// tokyoStore.renderToPage()
-
-
-// console.log(getRandomArbitrary(dubaiStore.dubaiMinCust, dubaiStore.dubaiMaxCust));
-
-// var dubaiStore = {
-//     name: "dubai",
-//      MinCust: 11,
-//      MaxCust: 38,
-//      Average: 3.7,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-//     storeId : 'dubaiStore-ul',
-//     createHours : createHours,
-//     renderToPage : renderToPage, 
-//     total : 0,
-// }
-
-// dubaiStore.createHours()
-// dubaiStore.renderToPage()
-
-// console.log(getRandomArbitrary(parisStore.parisMinCust, parisStore.parisMaxCust));
-
-// var parisStore = {
-//     name: "paris",
-//      MinCust: 20,
-//      MaxCust: 38,
-//      Average: 2.3,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-//     storeId : 'parisStore-ul',
-//     createHours : createHours,
-//     renderToPage : renderToPage, 
-//     total : 0,
-// }
-
-// parisStore.createHours()
-// parisStore.renderToPage()
-
-
-
-// console.log(getRandomArbitrary(limaStore.limaMinCust, limaStore.limaMaxCust));
-
-// var limaStore = {
-//     name: "lima",
-//      MinCust: 2,
-//      MaxCust: 16,
-//      Average: 4.6,
-//     hourlyCustomers:[],
-//     hourlyCookies:[],
-//     storeId : 'limaStore-ul',
-//     createHours : createHours,
-//     renderToPage : renderToPage, 
-//     total : 0,
-// }
 
 // limaStore.createHours()
 // limaStore.renderToPage()
@@ -258,7 +167,7 @@ function hourlyTotals() {
 //     header.appendChild(tableRow);
 // }
 
-
+var allStores = []
 
 // constructor function
 function CookieStore(name, storeId, minCust, maxCust, average){
@@ -270,7 +179,9 @@ function CookieStore(name, storeId, minCust, maxCust, average){
     this.hourlyCustomers = [];
     this.hourlyCookies = [];
     this.total = 0;
+    allStores.push(this)
   }
+  console.log(allStores)
   CookieStore.prototype.renderToPage = renderToPage;
   CookieStore.prototype.tableRender = tableRender;
   CookieStore.prototype.createHours = createHours;
@@ -327,31 +238,40 @@ createTableTotal();
 
 var firstDiv = document.getElementById('newStore');
 
-firstDiv.addEventListener('submit', function(event){
-    event.preventDefault()
-    // alert('you clicked the box');
-    console.log('submit', event);
-    console.log('city name', event.target.name.value)
-    console.log('city name', event.target.storeId.value)
-    console.log('minCust', event.target.minCust.value)
-    console.log('maxCust', event.target.maxCust.value)
-    console.log('minCust', event.target.average.value)
-    var newName = event.target.name.value
-    var newStoreId = event.target.storeId.value
-    var newMinCust = event.target.minCust.value
-    var newMaxCust = event.target.maxCust.value
-    var newAverage = event.target.average.value
-    var newCookieStore = new CookieStore (newName, newStoreId, newMinCust, newMaxCust, newAverage);
-    console.log(newCookieStore);
-});
 
-    function createNewCity(event){
-    };
+// function createNewCity(event){
+    // };
+    
+    firstDiv.addEventListener('submit', function(event){
+        event.preventDefault()
+        // alert('you clicked the box');
+        console.log('submit', event);
+        console.log('city name', event.target.name.value)
+        console.log('storeId', event.target.storeId.value)
+        console.log('minCust', event.target.minCust.value)
+        console.log('maxCust', event.target.maxCust.value)
+        console.log('minCust', event.target.average.value)
+        var newName = event.target.name.value
+        var newStoreId = event.target.storeId.value
+        var newMinCust = event.target.minCust.value
+        var newMaxCust = event.target.maxCust.value
+        var newAverage = event.target.average.value
+        var newCookieStore = new CookieStore (newName, newStoreId, newMinCust, newMaxCust, newAverage);
+        console.log(newCookieStore);
 
+        // newCookieStore.tableRender();
+        // newCookieStore.renderToPage();
+        newCookieStore.createHours();
+        newCookieStore.renderToPage();
 
+        newCookieStore.tableRender();
+
+createTableTotal();
+    });
+    
     //    console.log(name, minCust, maxCust, average);
-       
-var secondDiv = document.getElementById('minCust');
+    
+// var secondDiv = document.getElementById('minCust');
 
 // firstDiv.addEventListener('submit', function(event){
 //     event.preventDefault()
