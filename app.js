@@ -332,21 +332,32 @@ firstDiv.addEventListener('submit', function(event){
     // alert('you clicked the box');
     console.log('submit', event);
     console.log('city name', event.target.name.value)
+    console.log('city name', event.target.storeId.value)
     console.log('minCust', event.target.minCust.value)
     console.log('maxCust', event.target.maxCust.value)
     console.log('minCust', event.target.average.value)
-
+    var newName = event.target.name.value
+    var newStoreId = event.target.storeId.value
+    var newMinCust = event.target.minCust.value
+    var newMaxCust = event.target.maxCust.value
+    var newAverage = event.target.average.value
+    var newCookieStore = new CookieStore (newName, newStoreId, newMinCust, newMaxCust, newAverage);
+    console.log(newCookieStore);
 });
+
+    function createNewCity(event){
+    };
+
+
+    //    console.log(name, minCust, maxCust, average);
+       
 var secondDiv = document.getElementById('minCust');
 
-firstDiv.addEventListener('submit', function(event){
-    event.preventDefault()
-    // alert('you clicked the box');
-    console.log('submit', event);
-  });
+// firstDiv.addEventListener('submit', function(event){
+//     event.preventDefault()
+//     // alert('you clicked the box');
+//     console.log('submit', event);
+//   });
 
  
 
-//  function createNewCity(event){
-//     console.log(event.timeStamp);
-//     console.log(event.target);
