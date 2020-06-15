@@ -1,7 +1,7 @@
 'use strict'
 
 
-var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM", "8 PM"]
+var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", "2 PM", "3 PM", "4 PM", "5 PM", "6 PM", "7 PM"]
 
 
 //     function renderToPage(){
@@ -32,16 +32,19 @@ var hours = ["6 AM", "7 AM", "8 AM", "9 AM", "10 AM", "11 AM", "12 PM", "1 PM", 
 // }
 
 function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+    // console.log(Math.random() * (max-min) + min);
+    return (Math.random() * (max - min) + Number(min));
 }
 function createHours() {
-    console.log(this.MinCust);
-    for(var i = 0; i < 15; i++ ){
+    console.log(this.MinCust, this.MaxCust);
+    for(var i = 0; i < 14; i++ ){
         var getCust = Math.floor(getRandomArbitrary(this.MinCust, this.MaxCust));
+        console.log(getRandomArbitrary(this.MinCust, this.MaxCust) )
         console.log(getCust);
         var hourlyTotal = Math.floor(this.Average * getCust);
         this.hourlyCookies.push(hourlyTotal);
         this.total += hourlyTotal ;
+        console.log(this.MinCust)
     }
 }
 
@@ -137,11 +140,14 @@ function hourlyTotals() {
     
     for (var i = 0; i < hours.length; i++) {
         var theTotal = 0;
-        theTotal += seattleStore.hourlyCookies[i];
-        theTotal += tokyoStore.hourlyCookies[i];
-        theTotal += dubaiStore.hourlyCookies[i];
-        theTotal += parisStore.hourlyCookies[i];
-        theTotal += limaStore.hourlyCookies[i];
+        for (var j = 0; j < allStores.length; j++) {
+            theTotal += allStores[j].hourlyCookies[i];
+        }
+        // theTotal += seattleStore.hourlyCookies[i];
+        // theTotal += tokyoStore.hourlyCookies[i];
+        // theTotal += dubaiStore.hourlyCookies[i];
+        // theTotal += parisStore.hourlyCookies[i];
+        // theTotal += limaStore.hourlyCookies[i];
         console.log(theTotal);
         hourlyCookiesArr.push(theTotal);
     }
@@ -241,20 +247,20 @@ var firstDiv = document.getElementById('newStore');
     // };
     
     firstDiv.addEventListener('submit', function(event){
-        event.preventDefault()
+        event.preventDefault();
         // alert('you clicked the box');
         console.log('submit', event);
-        console.log('city name', event.target.name.value)
-        console.log('minCust', event.target.minCust.value)
-        console.log('maxCust', event.target.maxCust.value)
-        console.log('minCust', event.target.average.value)
-        var newName = event.target.name.value
-        var newMinCust = event.target.minCust.value
-        var newMaxCust = event.target.maxCust.value
-        var newAverage = event.target.average.value
+        console.log('city name', event.target.name.value);
+        console.log('minCust', event.target.minCust.value);
+        console.log('maxCust', event.target.maxCust.value);
+        console.log('minCust', event.target.average.value);
+        var newName = event.target.name.value;
+        var newMinCust = event.target.minCust.value;
+        var newMaxCust = event.target.maxCust.value;
+        var newAverage = event.target.average.value;
         //create table total is only making the footer
         var table = document.getElementById('cookie-table');
-        table.deleteRow(-1)
+        table.deleteRow(-1);
         var newCookieStore = new CookieStore (newName, newMinCust, newMaxCust, newAverage);
         console.log(newCookieStore);
 

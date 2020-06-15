@@ -1,5 +1,5 @@
 body {
-    background-color: lightblue;
+    background-color: rgb(197, 223, 231);
   }
 
   table {
@@ -10,4 +10,19 @@ body {
   th, td {
     border: solid #201d64 1px;
     padding: 5px;
+    color: rgb(224, 10, 10);
+    font-style: arial;
   }
+form {
+  color: rgb(83, 7, 94);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 100;
+}
+header > h1 {
+color: saddlebrown;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+ table {
+  background-color: aliceblue;
+}
