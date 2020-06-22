@@ -70,13 +70,17 @@ tableCell.textContent = this.name;
 
 tableRow.appendChild(tableCell);
 
-for(var i = 0; i < this.hourlyCookies.length; i++){
+var dailytotalStore = 0;
 
+for(var i = 0; i < this.hourlyCookies.length; i++){
+    dailytotalStore += this.hourlyCookies[i];
     tableCell = document.createElement('td');
     tableCell.textContent = this.hourlyCookies[i];
     tableRow.appendChild(tableCell);
     }
-
+    tableCell = document.createElement('td');
+    tableCell.textContent = dailytotalStore;
+    tableRow.appendChild(tableCell);
     table.appendChild(tableRow);
 
 
@@ -98,6 +102,9 @@ function createTableHours(){
         tableCell.textContent = hours[i];
         tableRow.appendChild(tableCell);
     }
+    tableCell = document.createElement('td');
+    tableCell.textContent = 'Store total';
+    tableRow.appendChild(tableCell);
     header.appendChild(tableRow);
 }
 //need to call the function hourlytotals and assign it to a variable 
